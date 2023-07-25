@@ -9,7 +9,7 @@ export const EditableSpan = (props: PropsType) => {
     const [newTitle, setNewTitle] = useState(props.oldTitle)
     const editHandler = () => {
         setEdit(!edit)
-        if(edit) {
+        if (edit) {
             updateTitle()
         }
     }
