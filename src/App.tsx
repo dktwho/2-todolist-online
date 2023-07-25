@@ -66,10 +66,9 @@ function App() {
         const newTodo: TodoListsType  = {id: todolistId, title: newTitle , filter: 'all'}
         setTodoLists([...todoLists, newTodo])
         setTasks({ ...tasks, [todolistId]: []})
-
     }
 
-    
+
     return (
         <div className="App">
             <AddItemForm callback={addTodoList} />

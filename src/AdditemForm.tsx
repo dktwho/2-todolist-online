@@ -1,6 +1,5 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 
-
 type PropsType = {
     callback: (title: string) => void
 }
@@ -27,8 +26,6 @@ export const AddItemForm = (props:PropsType ) => {
             addTask();
         }
     }
-
-
 
     return (
         <div>
