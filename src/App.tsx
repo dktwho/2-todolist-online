@@ -49,29 +49,39 @@ function App() {
     }
 
     function changeStatus(todoListId: string, taskId: string, isDoneValue: boolean) {
-        setTasks({...tasks, [todoListId]: tasks[todoListId].map(t => t.id === taskId ? {...t, isDone: isDoneValue} : t)})
+        setTasks({
+            ...tasks,
+            [todoListId]: tasks[todoListId].map(t => t.id === taskId ? {...t, isDone: isDoneValue} : t)
+        })
     }
 
     function changeFilter(todoListId: string, value: FilterValuesType) {
         setTodoLists(todoLists.map(tl => tl.id === todoListId ? {...tl, filter: value} : tl))
     }
 
-    function removeTodoList (todoListId: string)  {
-        setTodoLists(todoLists.filter(tl => tl.id !== todoListId ))
+    function removeTodoList(todoListId: string) {
+        setTodoLists(todoLists.filter(tl => tl.id !== todoListId))
         delete tasks[todoListId]
     }
 
     function addTodoList(newTitle: string) {
         const todolistId = v1()
-        const newTodo: TodoListsType  = {id: todolistId, title: newTitle , filter: 'all'}
+        const newTodo: TodoListsType = {id: todolistId, title: newTitle, filter: 'all'}
         setTodoLists([...todoLists, newTodo])
-        setTasks({ ...tasks, [todolistId]: []})
+        setTasks({...tasks, [todolistId]: []})
+    }
+
+    const updateTask = (todoListId: string, taskId: string, newTitle: string) => {
+        setTasks({
+            ...tasks,
+            [todoListId]: tasks[todoListId].map(el => el.id === taskId ? {...el, title: newTitle} : el)
+        })
     }
 
 
     return (
         <div className="App">
-            <AddItemForm callback={addTodoList} />
+            <AddItemForm callback={addTodoList}/>
 
             {todoLists.map((el, index) => {
                 let tasksForTodolist = tasks[el.id]
@@ -93,6 +103,7 @@ function App() {
                         changeTaskStatus={changeStatus}
                         removeTodoList={removeTodoList}
                         filter={el.filter}
+                        updateTask={updateTask}
                     />
                 )
             })}
