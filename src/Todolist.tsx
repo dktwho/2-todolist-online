@@ -52,6 +52,10 @@ export function Todolist(props: PropsType) {
     const onActiveClickHandler = () => props.changeFilter(props.todoListId,"active");
     const onCompletedClickHandler = () => props.changeFilter(props.todoListId,"completed");
 
+    const addTaskHandler = (title: string) => {
+        props.addTask(props.todoListId, title )
+    }
+
 
     return <div>
         <button onClick={() => props.removeTodoList(props.todoListId)}>x</button>
@@ -67,7 +71,8 @@ export function Todolist(props: PropsType) {
         {/*    {error && <div className="error-message">{error}</div>}*/}
         {/*</div>*/}
 
-        <AddItemForm addTask={props.addTask} todolistId={props.todoListId}/>
+        <AddItemForm callback={addTaskHandler}  />
+
         <ul>
             {
                 props.tasks.map(t => {
