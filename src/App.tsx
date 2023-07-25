@@ -78,8 +78,8 @@ function App() {
         })
     }
 
-    const updateTodoListTitle = (todoListId: string, newTitle: string) => {
-        setTodoLists(todoLists.map(el => el.id === todoListId ? {...el, title: newTitle} : el))
+    const updateTodoListTitle = (todoListId: string, title: string) => {
+        setTodoLists(todoLists.map(el => el.id === todoListId ? {...el, title} : el))
     }
 
 
