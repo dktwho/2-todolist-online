@@ -3,6 +3,8 @@ import {FilterValuesType} from './App';
 import {AddItemForm} from "./AdditemForm";
 import {EditableSpan} from "./EditableSpan";
 import {Button} from "@mui/material";
+import DeleteIcon from '@mui/icons-material/Delete';
+
 
 type TaskType = {
     id: string
@@ -46,7 +48,7 @@ export function Todolist(props: PropsType) {
 
         <h3>
             <EditableSpan oldTitle={props.title} callback={updateTodolistHandler}/>
-            <Button onClick={() => props.removeTodoList(props.todoListId)}>x</Button>
+            <Button variant="outlined"  startIcon={<DeleteIcon />}  onClick={() => props.removeTodoList(props.todoListId)}></Button>
              {/*<button onClick={() => props.removeTodoList(props.todoListId)}>x</button>*/}
         </h3>
         <AddItemForm callback={addTaskHandler}/>
